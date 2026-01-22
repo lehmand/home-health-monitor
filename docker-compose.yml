@@ -1,0 +1,7 @@
+services:
+  sensors-api:
+    build:
+      context: .
+      dockerfile: src/Services/Sensor/Sensor.API/Dockerfile
+    ports:
+      - "8080:8080"
