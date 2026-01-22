@@ -5,3 +5,18 @@ services:
       dockerfile: src/Services/Sensor/Sensor.API/Dockerfile
     ports:
       - "8080:8080"
+
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+    develop:
+      watch:
+        - action: rebuild
+          path: src/Services/Sensor/
+          ignore:
+            - src/Services/Sensor/Sensor.API/obj/
+            - src/Services/Sensor/Sensor.API/bin/
+          
+        - action: sync
+          path: src/Services/Sensor/Sensor.API/appsettings.Development.json
+          target: /app/appsettings.Development.json
