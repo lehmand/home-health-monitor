@@ -1,0 +1,18 @@
+# Ignore build output directories
+**/bin/
+**/obj/
+**/out/
+# Ignore temporary files
+*.log
+*.tmp
+*.swp
+# Ignore Docker-related files
+Dockerfile*
+*.dockerignore
+# Ignore test result files
+**/*.trx
+# Ignore markdown and script files
+**/*.md
+**/*.ps1
+**/*.cmd
+**/*.sh
