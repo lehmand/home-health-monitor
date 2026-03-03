@@ -5,7 +5,8 @@ services:
       dockerfile: src/Services/Sensor/Sensor.API/Dockerfile
     ports:
       - "8080:8080"
-
+    depends_on:
+      - db
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - DOTNET_USE_POLLING_FILE_WATCHER=1
