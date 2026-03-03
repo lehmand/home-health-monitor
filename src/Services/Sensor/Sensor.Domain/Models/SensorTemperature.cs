@@ -2,6 +2,7 @@ namespace Sensor.Domain.Models;
 
 public class SensorTemperature : SensorBase
 {
+    public required string Type { get; set; }
     public decimal Temperature { get; set; }
     public decimal MaxTemp { get; set; }
     public decimal LowTemp { get; set; }
