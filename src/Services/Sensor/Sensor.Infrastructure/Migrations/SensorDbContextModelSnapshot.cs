@@ -22,7 +22,7 @@ namespace Sensor.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Sensor.Domain.Models.SensorTemperature", b =>
+            modelBuilder.Entity("Sensor.Domain.Models.TemperatureSensor", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,13 +59,9 @@ namespace Sensor.Infrastructure.Migrations
                     b.Property<decimal>("Temperature")
                         .HasColumnType("numeric");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
-                    b.ToTable("SensorTemperatures");
+                    b.ToTable("TemperatureSensors");
                 });
 #pragma warning restore 612, 618
         }

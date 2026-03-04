@@ -12,7 +12,7 @@ using Sensor.Infrastructure.Data;
 namespace Sensor.Infrastructure.Migrations
 {
     [DbContext(typeof(SensorDbContext))]
-    [Migration("20260303125030_InitialCreate")]
+    [Migration("20260304110500_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace Sensor.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Sensor.Domain.Models.SensorTemperature", b =>
+            modelBuilder.Entity("Sensor.Domain.Models.TemperatureSensor", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,13 +62,9 @@ namespace Sensor.Infrastructure.Migrations
                     b.Property<decimal>("Temperature")
                         .HasColumnType("numeric");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
-                    b.ToTable("SensorTemperatures");
+                    b.ToTable("TemperatureSensors");
                 });
 #pragma warning restore 612, 618
         }

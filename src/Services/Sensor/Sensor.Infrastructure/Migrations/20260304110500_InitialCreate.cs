@@ -12,11 +12,10 @@ namespace Sensor.Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "SensorTemperatures",
+                name: "TemperatureSensors",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Type = table.Column<string>(type: "text", nullable: false),
                     Temperature = table.Column<decimal>(type: "numeric", nullable: false),
                     MaxTemp = table.Column<decimal>(type: "numeric", nullable: false),
                     LowTemp = table.Column<decimal>(type: "numeric", nullable: false),
@@ -30,7 +29,7 @@ namespace Sensor.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SensorTemperatures", x => x.Id);
+                    table.PrimaryKey("PK_TemperatureSensors", x => x.Id);
                 });
         }
 
@@ -38,7 +37,7 @@ namespace Sensor.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "SensorTemperatures");
+                name: "TemperatureSensors");
         }
     }
 }

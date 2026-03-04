@@ -1,6 +1,6 @@
 namespace Sensor.Domain.Models;
 
-public class SensorBase
+public abstract class SensorBase
 {
     public Guid Id { get; set; }
     public required string DeviceName { get; set; }
