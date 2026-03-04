@@ -12,7 +12,7 @@ using Sensor.Infrastructure.Data;
 namespace Sensor.Infrastructure.Migrations
 {
     [DbContext(typeof(SensorDbContext))]
-    [Migration("20260304110500_InitialCreate")]
+    [Migration("20260304112408_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
