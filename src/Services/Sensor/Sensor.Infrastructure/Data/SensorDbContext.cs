@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Sensor.Domain.Models;
+using Sensor.Domain.Entities;
 
 namespace Sensor.Infrastructure.Data;
 

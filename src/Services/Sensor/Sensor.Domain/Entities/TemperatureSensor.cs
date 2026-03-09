@@ -1,4 +1,4 @@
-namespace Sensor.Domain.Models;
+namespace Sensor.Domain.Entities;
 
 public class TemperatureSensor : SensorBase
 {

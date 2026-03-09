@@ -1,4 +1,4 @@
-namespace Sensor.Domain.Models;
+namespace Sensor.Domain.Entities;
 
 public abstract class SensorBase
 {
