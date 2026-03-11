@@ -1,0 +1,23 @@
+services:
+  sensors-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ConnectionStrings__SensorDb=Host=db;Port=5432;Database=sensor_db;Username=sensor_user;Password=sensor_dev_password
+    develop:
+      watch:
+        - action: rebuild
+          path: src/Services/Sensor/
+          ignore:
+            - src/Services/Sensor/Sensor.API/obj/
+            - src/Services/Sensor/Sensor.API/bin/
+          
+        - action: sync
+          path: src/Services/Sensor/Sensor.API/appsettings.Development.json
+          target: /app/appsettings.Development.json
+  db:
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin_dev_password
