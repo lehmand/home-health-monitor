@@ -1,9 +1,9 @@
 using MediatR;
-using Sensor.Application.Sensors.DTOs;
-using Sensor.Application.Sensors.Interfaces;
+using Sensor.Application.DTOs;
+using Sensor.Application.Interfaces;
 using Sensor.Domain.Entities;
 
-namespace Sensor.Application.Sensors.Commands.CreateTemperatureSensor;
+namespace Sensor.Application.Commands.CreateTemperatureSensor;
 
 public class CreateTemperatureSensorCommandHandler : IRequestHandler<CreateTemperatureSensorCommand, TemperatureSensorDto>
 {

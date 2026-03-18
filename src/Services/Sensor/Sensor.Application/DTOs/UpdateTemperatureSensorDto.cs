@@ -1,4 +1,4 @@
-namespace Sensor.Application.Sensors.DTOs;
+namespace Sensor.Application.DTOs;
 
 public class UpdateTemperatureSensorDto
 {

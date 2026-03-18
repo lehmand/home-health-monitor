@@ -1,7 +1,7 @@
 using MediatR;
-using Sensor.Application.Sensors.DTOs;
+using Sensor.Application.DTOs;
 
-namespace Sensor.Application.Sensors.Commands.CreateTemperatureSensor;
+namespace Sensor.Application.Commands.CreateTemperatureSensor;
 
 public record CreateTemperatureSensorCommand : IRequest<TemperatureSensorDto>
 {

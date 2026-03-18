@@ -1,7 +1,7 @@
-using Sensor.Application.Sensors.DTOs;
+using Sensor.Application.DTOs;
 using Sensor.Domain.Entities;
 
-namespace Sensor.Application.Sensors.Interfaces;
+namespace Sensor.Application.Interfaces;
 
 public interface ITemperatureSensorRepository
 {

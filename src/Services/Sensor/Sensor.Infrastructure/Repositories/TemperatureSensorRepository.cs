@@ -1,10 +1,10 @@
-using Sensor.Application.Sensors.Commands.CreateTemperatureSensor;
-using Sensor.Application.Sensors.DTOs;
-using Sensor.Application.Sensors.Interfaces;
+using Sensor.Application.Commands.CreateTemperatureSensor;
+using Sensor.Application.DTOs;
+using Sensor.Application.Interfaces;
 using Sensor.Domain.Entities;
 using Sensor.Infrastructure.Data;
 
-namespace Sensor.Infrastructure.Repositories.Sensors;
+namespace Sensor.Infrastructure.Repositories;
 
 public class TemperatureSensorRepository : ITemperatureSensorRepository
 {
