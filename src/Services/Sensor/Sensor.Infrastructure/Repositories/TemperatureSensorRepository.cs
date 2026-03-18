@@ -1,8 +1,9 @@
-using Sensor.Application.Commands.CreateTemperatureSensor;
+using Microsoft.EntityFrameworkCore;
 using Sensor.Application.DTOs;
 using Sensor.Application.Interfaces;
 using Sensor.Domain.Entities;
 using Sensor.Infrastructure.Data;
+using System.Linq;
 
 namespace Sensor.Infrastructure.Repositories;
 
@@ -34,5 +35,21 @@ public class TemperatureSensorRepository : ITemperatureSensorRepository
           IsOnline = sensor.IsOnline,
           IsEnabled = sensor.IsEnabled  
         };
+    }
+
+    public async Task<IEnumerable<TemperatureSensorDto>> GetAllSensorsAsync(CancellationToken cancellationToken)
+    {
+        var sensors = await _context.TemperatureSensors.ToListAsync(cancellationToken);
+
+        return sensors.Select(sensor => new TemperatureSensorDto
+        {
+          Id = sensor.Id,
+          DeviceName = sensor.DeviceName,
+          Room = sensor.Room,
+          Location = sensor.Location,
+          Temperature = sensor.Temperature,
+          IsOnline = sensor.IsOnline,
+          IsEnabled = sensor.IsEnabled
+        });
     }
 }
