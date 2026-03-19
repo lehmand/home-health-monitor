@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Sensor.Application.Interfaces;
 using Sensor.Infrastructure.Data;
 
 namespace Sensor.Infrastructure;
@@ -13,6 +14,7 @@ public static class DependencyInjection
     {
         services.AddDbContextPool<SensorDbContext>(opt => 
         opt.UseNpgsql(configuration.GetConnectionString("SensorDb")));
+        services.AddScoped<ITemperatureSensorRepository, ITemperatureSensorRepository>();
 
         return services;
     }
