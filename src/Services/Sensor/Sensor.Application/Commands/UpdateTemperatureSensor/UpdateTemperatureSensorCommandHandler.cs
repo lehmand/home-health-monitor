@@ -19,7 +19,7 @@ public class UpdateTemperatureSensorCommandHandler : IRequestHandler<UpdateTempe
         var entity = new TemperatureSensor
         {
           Id = request.Id,
-          DeviceName = request.DeviceName!,
+          DeviceName = request.DeviceName,
           Room = request.Room,
           Location = request.Location,
           IsEnabled = request.IsEnabled

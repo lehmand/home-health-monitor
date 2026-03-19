@@ -19,8 +19,8 @@ public class TemperatureSensorRepository : ITemperatureSensorRepository
     public async Task<TemperatureSensorDto> CreateSensorAsync(TemperatureSensor sensor, CancellationToken cancellationToken)
     {
         sensor.Id = Guid.NewGuid();
-        sensor.CreatedAt = DateTime.Now;
-        sensor.LastUpdated = DateTime.Now;
+        sensor.CreatedAt = DateTime.UtcNow;
+        sensor.LastUpdated = DateTime.UtcNow;
 
         _context.TemperatureSensors.Add(sensor);
         await _context.SaveChangesAsync(cancellationToken);
