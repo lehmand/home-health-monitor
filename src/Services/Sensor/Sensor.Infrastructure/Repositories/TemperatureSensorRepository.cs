@@ -55,6 +55,8 @@ public class TemperatureSensorRepository : ITemperatureSensorRepository
 
     public async Task<TemperatureSensorDto?> GetByIdAsync(Guid Id, CancellationToken cancellationToken)
     {
+        var sensor = await _context.TemperatureSensors.FirstOrDefaultAsync<TemperatureSensor>(s => s.Id == Id, cancellationToken);
 
+        return sensor;
     }
 }
