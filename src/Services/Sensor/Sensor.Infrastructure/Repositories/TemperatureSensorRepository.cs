@@ -16,7 +16,7 @@ public class TemperatureSensorRepository : ITemperatureSensorRepository
         _context = context;
     }
 
-    public async Task<TemperatureSensorDto> CreateSensorAsync(TemperatureSensor sensor, CancellationToken cancellationToken)
+    public async Task<TemperatureSensorDto> CreateAsync(TemperatureSensor sensor, CancellationToken cancellationToken)
     {
         sensor.Id = Guid.NewGuid();
         sensor.CreatedAt = DateTime.UtcNow;
@@ -37,7 +37,7 @@ public class TemperatureSensorRepository : ITemperatureSensorRepository
         };
     }
 
-    public async Task<IEnumerable<TemperatureSensorDto>> GetAllSensorsAsync(CancellationToken cancellationToken)
+    public async Task<IEnumerable<TemperatureSensorDto>> GetAllAsync(CancellationToken cancellationToken)
     {
         var sensors = await _context.TemperatureSensors.ToListAsync(cancellationToken);
 
@@ -51,5 +51,10 @@ public class TemperatureSensorRepository : ITemperatureSensorRepository
           IsOnline = sensor.IsOnline,
           IsEnabled = sensor.IsEnabled
         });
+    }
+
+    public async Task<TemperatureSensorDto?> GetByIdAsync(Guid Id, CancellationToken cancellationToken)
+    {
+
     }
 }
