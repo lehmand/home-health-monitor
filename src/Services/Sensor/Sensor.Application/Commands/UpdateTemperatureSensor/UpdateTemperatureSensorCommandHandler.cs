@@ -25,6 +25,6 @@ public class UpdateTemperatureSensorCommandHandler : IRequestHandler<UpdateTempe
           IsEnabled = request.IsEnabled
         };
 
-        return await _repository.UpdateSensorAsync(entity, cancellationToken);
+        return await _repository.UpdateAsync(entity, cancellationToken);
     }
 }

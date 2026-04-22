@@ -14,6 +14,6 @@ public class DeleteTemperatureSensorCommandHandler : IRequestHandler<DeleteTempe
 
     public async Task<bool> Handle(DeleteTemperatureSensorCommand request, CancellationToken cancellationToken)
     {
-        return await _repository.DeleteSensorAsync(request.Id, cancellationToken);
+        return await _repository.DeleteAsync(request.Id, cancellationToken);
     }
 }

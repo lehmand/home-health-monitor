@@ -22,6 +22,6 @@ public class CreateTemperatureSensorCommandHandler : IRequestHandler<CreateTempe
             Location = request.Location
         };
 
-        return await _repository.CreateSensorAsync(entity, cancellationToken);        
+        return await _repository.CreateAsync(entity, cancellationToken);        
     }
 }

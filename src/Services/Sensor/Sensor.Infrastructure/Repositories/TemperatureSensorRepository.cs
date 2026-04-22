@@ -4,6 +4,7 @@ using Sensor.Application.Interfaces;
 using Sensor.Domain.Entities;
 using Sensor.Infrastructure.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Sensor.Infrastructure.Repositories;
 
@@ -57,6 +58,17 @@ public class TemperatureSensorRepository : ITemperatureSensorRepository
     {
         var sensor = await _context.TemperatureSensors.FirstOrDefaultAsync<TemperatureSensor>(s => s.Id == Id, cancellationToken);
 
-        return sensor;
+        if (sensor is null) return null;
+
+        return new TemperatureSensorDto
+        {
+          Id = sensor.Id,
+          DeviceName = sensor.DeviceName,
+          Room = sensor.Room,
+          Location = sensor.Location,
+          Temperature = sensor.Temperature,
+          IsOnline = sensor.IsOnline,
+          IsEnabled = sensor.IsEnabled
+        };
     }
 }
