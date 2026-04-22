@@ -40,7 +40,7 @@ public class TemperatureSensorRepository : ITemperatureSensorRepository
 
     public async Task<IEnumerable<TemperatureSensorDto>> GetAllAsync(CancellationToken cancellationToken)
     {
-        var sensors = await _context.TemperatureSensors.ToListAsync(cancellationToken);
+        var sensors = await _context.TemperatureSensors.(cancellationToken);
 
         return sensors.Select(sensor => new TemperatureSensorDto
         {
@@ -70,5 +70,30 @@ public class TemperatureSensorRepository : ITemperatureSensorRepository
           IsOnline = sensor.IsOnline,
           IsEnabled = sensor.IsEnabled
         };
+    }
+
+    public async Task<TemperatureSensorDto> UpdateAsync(TemperatureSensor tempSensor, CancellationToken cancellationToken)
+    {
+        var sensor = await _context.TemperatureSensors.FirstOrDefaultAsync<TemperatureSensor>(s => s.Id == tempSensor.Id, cancellationToken);
+
+        if (sensor is null) throw new KeyNotFoundException($"SensorId with {tempSensor.Id}not found.");
+
+        sensor.DeviceName = tempSensor.DeviceName;
+        sensor.Room = tempSensor.Room;
+        sensor.Location = tempSensor.Location;
+        sensor.Temperature = tempSensor.Temperature;
+        sensor.IsOnline = tempSensor.IsOnline;
+        sensor.IsEnabled = tempSensor.IsEnabled;
+
+        return new TemperatureSensorDto
+        {
+           Id = sensor.Id,
+           DeviceName = sensor.DeviceName,
+           Room = sensor.Room,
+           Temperature = sensor.Temperature,
+           IsOnline = sensor.IsOnline,
+           IsEnabled = sensor.IsEnabled
+        };
+    
     }
 }
