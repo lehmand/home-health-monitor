@@ -94,6 +94,19 @@ public class TemperatureSensorRepository : ITemperatureSensorRepository
            IsOnline = sensor.IsOnline,
            IsEnabled = sensor.IsEnabled
         };
-    
+    }
+
+    public async Task<bool> DeleteAsync(Guid Id, CancellationToken cancellationToken)
+    {
+        var sensorToRemove = await _context.TemperatureSensors.SingleOrDefaultAsync(s => s.Id == Id, cancellationToken);
+
+        if (sensorToRemove is null)
+        {
+            return false;
+        } 
+
+        _context.TemperatureSensors.Remove(sensorToRemove);
+        await _context.SaveChangesAsync(cancellationToken);
+        return true;
     }
 }
