@@ -3,8 +3,6 @@ using Sensor.Application.DTOs;
 using Sensor.Application.Interfaces;
 using Sensor.Domain.Entities;
 using Sensor.Infrastructure.Data;
-using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace Sensor.Infrastructure.Repositories;
 
@@ -40,7 +38,7 @@ public class TemperatureSensorRepository : ITemperatureSensorRepository
 
     public async Task<IEnumerable<TemperatureSensorDto>> GetAllAsync(CancellationToken cancellationToken)
     {
-        var sensors = await _context.TemperatureSensors.(cancellationToken);
+        var sensors = await _context.TemperatureSensors.ToListAsync(cancellationToken);
 
         return sensors.Select(sensor => new TemperatureSensorDto
         {
@@ -74,7 +72,7 @@ public class TemperatureSensorRepository : ITemperatureSensorRepository
 
     public async Task<TemperatureSensorDto> UpdateAsync(TemperatureSensor tempSensor, CancellationToken cancellationToken)
     {
-        var sensor = await _context.TemperatureSensors.FirstOrDefaultAsync<TemperatureSensor>(s => s.Id == tempSensor.Id, cancellationToken);
+        var sensor = await _context.TemperatureSensors.FirstOrDefaultAsync(s => s.Id == tempSensor.Id, cancellationToken);
 
         if (sensor is null) throw new KeyNotFoundException($"SensorId with {tempSensor.Id}not found.");
 
@@ -84,6 +82,8 @@ public class TemperatureSensorRepository : ITemperatureSensorRepository
         sensor.Temperature = tempSensor.Temperature;
         sensor.IsOnline = tempSensor.IsOnline;
         sensor.IsEnabled = tempSensor.IsEnabled;
+
+        await _context.SaveChangesAsync(cancellationToken);
 
         return new TemperatureSensorDto
         {
