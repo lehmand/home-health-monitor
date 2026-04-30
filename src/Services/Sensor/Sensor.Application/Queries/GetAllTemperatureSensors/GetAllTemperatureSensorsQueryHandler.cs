@@ -14,6 +14,6 @@ public class GetAllTemperatureSensorsQueryHandler : IRequestHandler<GetAllTemper
 
     public async Task<IEnumerable<TemperatureSensorDto>> Handle(GetAllTemperatureSensorsQuery request, CancellationToken cancellationToken)
     {
-        return await _repository.GetAllSensorsAsync(cancellationToken);
+        return await _repository.GetAllAsync(cancellationToken);
     }
 }
